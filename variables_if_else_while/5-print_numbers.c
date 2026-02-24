@@ -1,6 +1,7 @@
 #include <stdio.h>
 /**
- * main: starting point
+ * main - starting point
+ *
  * description: addiche les chiffre de 0 à 9
  * return: always 0
  */
