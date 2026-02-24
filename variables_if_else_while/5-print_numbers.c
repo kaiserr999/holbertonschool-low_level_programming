@@ -2,8 +2,7 @@
 /**
  * main - starting point
  *
- * description: addiche les chiffre de 0 à 9
- * return: always 0
+ * Return: always 0 (success)
  */
 int main(void)
 {
