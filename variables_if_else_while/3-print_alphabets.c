@@ -1,23 +1,28 @@
 #include <stdio.h>
 
 /**
- * main : Entry point
- * description : ecrire tous les char en maj et min
- * return: Always 0 "success"
+ * main - Point d'entrée
+ * Description: Affiche l'alphabet en minuscules, puis en majuscules
+ * Return: Toujours 0 (Succès)
  */
- int main(void)
- {
+int main(void)
+{
 	char lettre;
-       	for (lettre = 'a'; lettre <= 'z'; lettre++)
-         {
-		putchar(lettre);
-	 }
-	 for (lettre = 'A'; lettre <= 'Z'; lettre++)
-	 {
-		 putchar(lettre);
-	 }
-	 
-	 putchar('\n');
 
-	 return (0);
- }
+	/* 1. Boucle pour les minuscules */
+	for (lettre = 'a'; lettre <= 'z'; lettre++)
+	{
+		putchar(lettre); /* Premier putchar utilisé */
+	}
+
+	/* 2. Boucle pour les majuscules */
+	for (lettre = 'A'; lettre <= 'Z'; lettre++)
+	{
+		putchar(lettre); /* Deuxième putchar utilisé */
+	}
+
+	/* 3. Saut de ligne final */
+	putchar('\n'); /* Troisième putchar utilisé */
+
+	return (0);
+}
