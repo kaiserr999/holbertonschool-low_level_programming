@@ -1,10 +1,9 @@
 #include "main.h"
 
 /**
- * main - Entry point
- * Description: le programme doit checker si le caractere est en minuscule ou pas
- *              suivi d'un retour a la ligne
- * Return: always 0 (success)
+ * _islower - checks if a character is a lowercase letter
+ * @c: the character to check
+ * Return: 1 if c is lowercase, 0 otherwise
  */
 
 int _islower(int c)
