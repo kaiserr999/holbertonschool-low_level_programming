@@ -1,15 +1,19 @@
 #include "main.h"
 
 /**
- * main - Entry point
- * Description: le programme doit afficher 1 si c est une lettre, majuscule ou minuscule
- * Return: always 0 (success)
+ * _isalpha - checks if a character is alphabetic
+ * @c: the character to check
+ *
+ * Return: 1 if c is a letter (upper or lower case), 0 otherwise
  */
-int _isalpha(int c=)
+int _isalpha(int c)
 {
-
-
-
-    
+    if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+    {
+        return (1);
+    }
+    else
+    {
+        return (0);
+    }
 }
-
