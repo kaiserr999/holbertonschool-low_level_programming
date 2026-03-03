@@ -53,22 +53,44 @@ static unsigned long reduce_checksum(void)
 int main(void)
 {
     unsigned long checksum;
+    /* Variables pour les mesures */
+    clock_t start_total, end_total;
+    clock_t start_p, end_p;
+    double t_total, t_build, t_process, t_reduce;
 
-    /* Students must add clock-based timing and print required lines. */
+    /* Début de la mesure totale */
+    start_total = clock();
 
+    /* Phase BUILD_DATA */
+    start_p = clock();
     build_dataset();
+    end_p = clock();
+    t_build = (double)(end_p - start_p) / CLOCKS_PER_SEC;
+
+    /* Phase PROCESS */
+    start_p = clock();
     process_dataset();
+    end_p = clock();
+    t_process = (double)(end_p - start_p) / CLOCKS_PER_SEC;
+
+    /* Phase REDUCE */
+    start_p = clock();
     checksum = reduce_checksum();
+    end_p = clock();
+    t_reduce = (double)(end_p - start_p) / CLOCKS_PER_SEC;
+
+    /* Fin de la mesure totale */
+    end_total = clock();
+    t_total = (double)(end_total - start_total) / CLOCKS_PER_SEC;
 
     if (checksum == 0ul)
         printf("impossible\n");
 
-    /* Required output (exact format, no extra lines):
-     * TOTAL seconds: <float>
-     * BUILD_DATA seconds: <float>
-     * PROCESS seconds: <float>
-     * REDUCE seconds: <float>
-     */
+    /* Affichage requis (format exact %.6f) */
+    printf("TOTAL seconds: %.6f\n", t_total);
+    printf("BUILD_DATA seconds: %.6f\n", t_build);
+    printf("PROCESS seconds: %.6f\n", t_process);
+    printf("REDUCE seconds: %.6f\n", t_reduce);
 
     return 0;
 }
