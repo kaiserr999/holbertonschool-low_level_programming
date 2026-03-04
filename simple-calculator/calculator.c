@@ -8,23 +8,34 @@
 int main(void)
 {
 	int choice;
+	int scan_result;
 
-	printf("Simple Calculator\n");
-	printf("1) Add\n");
-	printf("2) Subtract\n");
-	printf("3) Multiply\n");
-	printf("4) Divide\n");
-	printf("0) Quit\n");
-	printf("Choice: ");
-
-	if (scanf("%d", &choice) != 1)
+	while (1)
 	{
-		printf("Bye!\n");
-		return (0);
-	}
+		printf("Simple Calculator\n");
+		printf("1) Add\n");
+		printf("2) Subtract\n");
+		printf("3) Multiply\n");
+		printf("4) Divide\n");
+		printf("0) Quit\n");
+		printf("Choice: ");
 
-	if (choice == 0)
-		printf("Bye!\n");
+		scan_result = scanf("%d", &choice);
+		if (scan_result != 1)
+		{
+			printf("Invalid choice\n");
+			return (0);
+		}
+
+		if (choice == 0)
+		{
+			printf("Bye!\n");
+			break;
+		}
+
+		if (choice < 0 || choice > 4)
+			printf("Invalid choice\n");
+	}
 
 	return (0);
 }
