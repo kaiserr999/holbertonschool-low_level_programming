@@ -10,11 +10,12 @@ int _atoi(char *s)
 {
 	int sign;
 	int num;
+	int digit;
 
 	sign = 1;
 	num = 0;
 
-	while (*s && !(*s >= '0' && *s <= '9'))
+	while (*s != '\0' && !(*s >= '0' && *s <= '9'))
 	{
 		if (*s == '-')
 			sign *= -1;
@@ -23,9 +24,22 @@ int _atoi(char *s)
 
 	while (*s >= '0' && *s <= '9')
 	{
-		num = num * 10 + (*s - '0');
+		digit = *s - '0';
+		
+		if (num < -214748364 || (num == -214748364 && digit > 8))
+		{
+			while (*s >= '0' && *s <= '9')
+				s++;
+			break;
+		}
+		
+		num = num * 10 - digit;
 		s++;
 	}
 
-	return (sign * num);
+	if (sign == 1)
+		num = -num;
+
+	return (num);
 }
+
