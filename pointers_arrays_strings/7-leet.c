@@ -5,8 +5,6 @@
  * @s: string to encode
  *
  * Return: pointer to s
- *
- * Restrictions: only one if, two loops, no switch/ternary
  */
 char *leet(char *s)
 {
