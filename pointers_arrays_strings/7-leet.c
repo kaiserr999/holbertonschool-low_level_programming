@@ -12,7 +12,7 @@ char *leet(char *s)
 {
 	int i, j;
 	char *from = "aAeEoOtTlL";
-	char *to   = "4433077100"; /* NOTE: length matches, see positions below */
+	char *to   = "4433007711"; /* a/A=4, e/E=3, o/O=0, t/T=7, l/L=1 */
 
 	/* loop through characters */
 	i = 0;
