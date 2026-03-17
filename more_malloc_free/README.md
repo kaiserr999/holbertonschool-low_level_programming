@@ -10,7 +10,9 @@ This directory contains the `malloc_checked` function for the Holberton School p
 - `1-main.c` - test driver that exercises `string_nconcat`.
 - `2-calloc.c` - allocates zero-initialized memory for an array (like `calloc`).
 - `2-main.c` - test driver that exercises `_calloc`.
-- `main.h` - header declaring `malloc_checked`, `string_nconcat`, and `_calloc`.
+- `3-array_range.c` - creates an array of ints from `min` to `max`.
+- `3-main.c` - test driver that exercises `array_range`.
+- `main.h` - header declaring `malloc_checked`, `string_nconcat`, `_calloc`, and `array_range`.
 
 ## Compilation
 
