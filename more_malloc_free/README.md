@@ -6,7 +6,9 @@ This directory contains the `malloc_checked` function for the Holberton School p
 
 - `0-malloc_checked.c` - allocates memory using `malloc` and exits with status `98` when allocation fails.
 - `0-main.c` - test driver that exercises `malloc_checked`.
-- `main.h` - header declaring `malloc_checked`.
+- `1-string_nconcat.c` - concatenates two strings using a newly allocated buffer.
+- `1-main.c` - test driver that exercises `string_nconcat`.
+- `main.h` - header declaring `malloc_checked` and `string_nconcat`.
 
 ## Compilation
 
