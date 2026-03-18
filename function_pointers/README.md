@@ -17,6 +17,7 @@ This project introduces function pointers in C programming, demonstrating how to
 | `function_pointers.h` | Header file containing function prototypes |
 | `0-print_name.c` | Function that prints a name using a function pointer |
 | `1-array_iterator.c` | Function that executes a function on each element of an array |
+| `2-int_index.c` | Function that searches for an integer using a comparison function |
 
 ## Key Concepts
 
@@ -61,6 +62,16 @@ void array_iterator(int *array, size_t size, void (*action)(int));
 - Executes the provided function on each element of the array
 - Includes safety checks for NULL array and function pointers
 - Demonstrates function pointers with arrays and iteration
+
+### 2-int_index.c
+```c
+int int_index(int *array, int size, int (*cmp)(int));
+```
+- Searches for an integer in an array using a comparison function
+- Returns the index of the first element for which cmp function does not return 0
+- Returns -1 if no element matches or if size <= 0
+- Includes safety checks for NULL array and function pointers
+- Demonstrates search algorithms with function pointers
 
 ## Usage Example
 
@@ -134,6 +145,46 @@ int main(void)
     printf("Doubled: ");
     array_iterator(numbers, size, multiply_by_two);
     printf("\n");
+    
+    return (0);
+}
+```
+
+### Search Function Example
+
+```c
+#include <stdio.h>
+#include "function_pointers.h"
+
+int is_even(int n)
+{
+    return (n % 2 == 0);
+}
+
+int is_negative(int n)
+{
+    return (n < 0);
+}
+
+int is_greater_than_10(int n)
+{
+    return (n > 10);
+}
+
+int main(void)
+{
+    int numbers[] = {1, 3, -5, 8, 12, -2, 7};
+    int size = sizeof(numbers) / sizeof(numbers[0]);
+    int index;
+    
+    index = int_index(numbers, size, is_even);
+    printf("First even number at index: %d\n", index);    // Output: 3 (value 8)
+    
+    index = int_index(numbers, size, is_negative);
+    printf("First negative number at index: %d\n", index); // Output: 2 (value -5)
+    
+    index = int_index(numbers, size, is_greater_than_10);
+    printf("First number > 10 at index: %d\n", index);    // Output: 4 (value 12)
     
     return (0);
 }
