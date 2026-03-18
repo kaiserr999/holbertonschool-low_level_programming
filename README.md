@@ -16,6 +16,7 @@ This repository contains projects and exercises for the Low Level Programming cu
 | [`argc_argv`](./argc_argv) | Command line arguments handling |
 | [`structures_typedef`](./structures_typedef) | Structures and typedef in C |
 | [`function_pointers`](./function_pointers) | Function pointers and callback functions |
+| [`variadic_functions`](./variadic_functions) | Variadic functions with variable arguments |
 | [`intro_debugging`](./intro_debugging) | Debugging techniques and common error patterns |
 | [`simple-calculator`](./simple-calculator) | Menu-driven calculator program |
 | [`benchmarking`](./benchmarking) | Performance analysis and algorithm comparison |
@@ -44,6 +45,7 @@ This repository contains projects and exercises for the Low Level Programming cu
 - **Command line**: argc/argv argument processing
 - **Data structures**: structures, typedef, custom types
 - **Function pointers**: callback functions, flexible programming
+- **Variadic functions**: functions with variable arguments
 - **Debugging**: systematic debugging approaches
 - **Performance**: benchmarking and optimization
 
