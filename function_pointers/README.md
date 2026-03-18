@@ -18,6 +18,10 @@ This project introduces function pointers in C programming, demonstrating how to
 | `0-print_name.c` | Function that prints a name using a function pointer |
 | `1-array_iterator.c` | Function that executes a function on each element of an array |
 | `2-int_index.c` | Function that searches for an integer using a comparison function |
+| `3-calc.h` | Header file for calculator program with struct and prototypes |
+| `3-op_functions.c` | Implementation of arithmetic operation functions |
+| `3-get_op_func.c` | Function selector that returns appropriate operation function |
+| `3-main.c` | Main calculator program with command-line interface |
 
 ## Key Concepts
 
@@ -72,6 +76,34 @@ int int_index(int *array, int size, int (*cmp)(int));
 - Returns -1 if no element matches or if size <= 0
 - Includes safety checks for NULL array and function pointers
 - Demonstrates search algorithms with function pointers
+
+### 3-calc.h, 3-op_functions.c, 3-get_op_func.c, 3-main.c
+Complete calculator program demonstrating advanced function pointer usage:
+
+**3-calc.h**: Header with struct definition
+```c
+typedef struct op {
+    char *op;
+    int (*f)(int a, int b);
+} op_t;
+```
+
+**3-op_functions.c**: Five arithmetic operations
+- `op_add`: Addition
+- `op_sub`: Subtraction  
+- `op_mul`: Multiplication
+- `op_div`: Division
+- `op_mod`: Modulo
+
+**3-get_op_func.c**: Function selector with strict constraints
+- Returns function pointer based on operator string
+- Uses array of structs for function mapping
+- Single while loop and conditional logic
+
+**3-main.c**: Command-line calculator interface
+- Usage: `./calc num1 operator num2`
+- Error handling for invalid arguments, operators, and division by zero
+- Different exit codes for different error types
 
 ## Usage Example
 
@@ -188,6 +220,27 @@ int main(void)
     
     return (0);
 }
+```
+
+### Calculator Usage Examples
+
+```bash
+# Compile the calculator
+gcc -Wall -pedantic -Werror -Wextra -std=gnu89 3-main.c 3-op_functions.c 3-get_op_func.c -o calc
+
+# Basic operations
+./calc 1 + 1          # Output: 2
+./calc 97 + 1         # Output: 98
+./calc 1024 / 10      # Output: 102
+./calc 1024 '*' 98    # Output: 100352 (quotes needed for shell)
+./calc 1024 - 98      # Output: 926
+./calc 1024 '%' 98    # Output: 44
+
+# Error cases
+./calc 1 2 3 4        # Output: Error (exit code 98 - wrong args)
+./calc 1024 'x' 98    # Output: Error (exit code 99 - invalid operator)
+./calc 1024 / 0       # Output: Error (exit code 100 - division by zero)
+./calc 1024 '%' 0     # Output: Error (exit code 100 - modulo by zero)
 ```
 
 ## Compilation
