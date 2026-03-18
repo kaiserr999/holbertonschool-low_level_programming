@@ -15,6 +15,7 @@ This repository contains projects and exercises for the Low Level Programming cu
 | [`more_malloc_free`](./more_malloc_free) | Advanced dynamic memory management |
 | [`argc_argv`](./argc_argv) | Command line arguments handling |
 | [`structures_typedef`](./structures_typedef) | Structures and typedef in C |
+| [`function_pointers`](./function_pointers) | Function pointers and callback functions |
 | [`intro_debugging`](./intro_debugging) | Debugging techniques and common error patterns |
 | [`simple-calculator`](./simple-calculator) | Menu-driven calculator program |
 | [`benchmarking`](./benchmarking) | Performance analysis and algorithm comparison |
@@ -42,6 +43,7 @@ This repository contains projects and exercises for the Low Level Programming cu
 ### 4. Advanced Concepts
 - **Command line**: argc/argv argument processing
 - **Data structures**: structures, typedef, custom types
+- **Function pointers**: callback functions, flexible programming
 - **Debugging**: systematic debugging approaches
 - **Performance**: benchmarking and optimization
 
