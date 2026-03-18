@@ -18,6 +18,7 @@ This project introduces variadic functions in C programming, demonstrating how t
 | `0-sum_them_all.c` | Function that returns the sum of all its parameters |
 | `1-print_numbers.c` | Function that prints numbers separated by a string |
 | `2-print_strings.c` | Function that prints strings separated by a string |
+| `3-print_all.c` | Function that prints anything based on format specifiers |
 
 ## Key Concepts
 
@@ -88,6 +89,19 @@ void print_strings(const char *separator, const unsigned int n, ...);
 - If any string is NULL, prints "(nil)" instead
 - Always prints a newline at the end
 - Uses `printf` for output formatting
+
+### 3-print_all.c
+```c
+void print_all(const char * const format, ...);
+```
+- Takes a format string indicating the types of following arguments
+- Format specifiers: 'c' (char), 'i' (int), 'f' (float), 's' (string)
+- Prints arguments according to their format specifiers
+- Ignores invalid format characters
+- If string argument is NULL, prints "(nil)" instead
+- Prints ", " between arguments automatically
+- Always prints a newline at the end
+- **Constrained implementation**: max 2 while loops, 2 if statements, 9 variables
 
 ## Usage Examples
 
@@ -169,6 +183,48 @@ int main(void)
     // With NULL string
     print_strings(", ", 3, "Hello", NULL, "World");
     // Output: Hello, (nil), World
+    
+    // Single string
+    print_strings(" - ", 1, "Solo");
+    // Output: Solo
+    
+    // No strings
+    print_strings(", ", 0);
+    // Output: (just newline)
+    
+    return (0);
+}
+```
+
+### Print All Examples
+```c
+#include <stdio.h>
+#include "variadic_functions.h"
+
+int main(void)
+{
+    // Mixed types with format string
+    print_all("ceis", 'B', 3, "stSchool");
+    // Output: B, 3, stSchool (note: 'e' is invalid, so ignored)
+    
+    // All supported types
+    print_all("cifs", 'A', 42, 3.14, "Hello");
+    // Output: A, 42, 3.140000, Hello
+    
+    // With NULL string
+    print_all("cs", 'X', (char *)NULL);
+    // Output: X, (nil)
+    
+    // Invalid format characters ignored
+    print_all("cxyzis", 'Y', 123, "World");
+    // Output: Y, 123, World (x, y, z ignored)
+    
+    // Empty format
+    print_all("", 'Z', 999, "Ignored");
+    // Output: (just newline)
+    
+    return (0);
+}
     
     // Single string
     print_strings(" - ", 1, "Solo");
