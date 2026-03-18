@@ -12,7 +12,7 @@ void print_all(const char * const format, ...)
     va_list args;
     int i, j;
     char *str, *sep;
-    
+
     va_start(args, format);
     i = 0;
     sep = "";
