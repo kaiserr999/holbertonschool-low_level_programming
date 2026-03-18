@@ -16,6 +16,7 @@ This project introduces variadic functions in C programming, demonstrating how t
 |------|-------------|
 | `variadic_functions.h` | Header file containing function prototypes |
 | `0-sum_them_all.c` | Function that returns the sum of all its parameters |
+| `1-print_numbers.c` | Function that prints numbers separated by a string |
 
 ## Key Concepts
 
@@ -66,6 +67,16 @@ int sum_them_all(const unsigned int n, ...);
 - Returns 0 if `n == 0`
 - Demonstrates basic variadic function usage with `stdarg.h`
 
+### 1-print_numbers.c
+```c
+void print_numbers(const char *separator, const unsigned int n, ...);
+```
+- Takes a separator string, count `n`, and variable number of integers
+- Prints all integers separated by the separator string
+- If separator is NULL, prints numbers without separators
+- Always prints a newline at the end
+- Uses `printf` for output formatting
+
 ## Usage Examples
 
 ### Basic Usage
@@ -88,6 +99,37 @@ int main(void)
     // Edge case: no arguments to sum
     result = sum_them_all(0);
     printf("Sum: %d\n", result);  // Output: 0
+    
+    return (0);
+}
+```
+
+### Print Numbers Examples
+```c
+#include <stdio.h>
+#include "variadic_functions.h"
+
+int main(void)
+{
+    // Basic usage with comma separator
+    print_numbers(", ", 4, 0, 98, -1024, 402);
+    // Output: 0, 98, -1024, 402
+    
+    // Using different separator
+    print_numbers(" | ", 3, 10, 20, 30);
+    // Output: 10 | 20 | 30
+    
+    // NULL separator (no separators)
+    print_numbers(NULL, 3, 1, 2, 3);
+    // Output: 123
+    
+    // Single number
+    print_numbers(", ", 1, 42);
+    // Output: 42
+    
+    // No numbers
+    print_numbers(", ", 0);
+    // Output: (just newline)
     
     return (0);
 }
