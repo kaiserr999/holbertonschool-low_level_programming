@@ -1,4 +1,4 @@
-#include "secure_data_handling.h"
+#include "store.h"
 
 /**
  * main - test the secure data handling

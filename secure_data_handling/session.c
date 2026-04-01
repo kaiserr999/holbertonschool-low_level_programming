@@ -1,4 +1,4 @@
-#include "secure_data_handling.h"
+#include "session.h"
 
 /**
  * session_create - creates a new session
