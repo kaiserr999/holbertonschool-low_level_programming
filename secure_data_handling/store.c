@@ -1,4 +1,9 @@
 #include "store.h"
+#include <stdlib.h>
+#include <string.h>
+
+/* Global session list */
+static session_t *global_sessions = NULL;
 
 /**
  * store_create - creates a new session store
@@ -13,7 +18,6 @@ store_t *store_create(void)
 	if (store == NULL)
 		return (NULL);
 
-	store->sessions = NULL;
 	return (store);
 }
 
@@ -45,7 +49,7 @@ int store_insert(store_t *store, session_t *session)
 		return (0);
 
 	/* Check if session with same id already exists */
-	current = store->sessions;
+	current = global_sessions;
 	while (current != NULL)
 	{
 		if (strcmp(current->id, session->id) == 0)
@@ -54,8 +58,8 @@ int store_insert(store_t *store, session_t *session)
 	}
 
 	/* Insert at beginning */
-	session->next = store->sessions;
-	store->sessions = session;
+	session->next = global_sessions;
+	global_sessions = session;
 	return (1);
 }
 
@@ -73,7 +77,7 @@ session_t *store_get(store_t *store, const char *id)
 	if (store == NULL || id == NULL)
 		return (NULL);
 
-	current = store->sessions;
+	current = global_sessions;
 	while (current != NULL)
 	{
 		if (strcmp(current->id, id) == 0)
@@ -88,17 +92,18 @@ session_t *store_get(store_t *store, const char *id)
  * store_delete - deletes a session from the store
  * @store: session store
  * @id: session id to delete
+ * @out: pointer to store the deleted session
  *
  * Return: 1 if deleted, 0 if not found
  */
-int store_delete(store_t *store, const char *id)
+int store_delete(store_t *store, const char *id, session_t **out)
 {
 	session_t *current, *prev;
 
 	if (store == NULL || id == NULL)
 		return (0);
 
-	current = store->sessions;
+	current = global_sessions;
 	prev = NULL;
 
 	while (current != NULL)
@@ -106,11 +111,14 @@ int store_delete(store_t *store, const char *id)
 		if (strcmp(current->id, id) == 0)
 		{
 			if (prev == NULL)
-				store->sessions = current->next;
+				global_sessions = current->next;
 			else
 				prev->next = current->next;
 
-			session_destroy(current);
+			if (out != NULL)
+				*out = current;
+			else
+				session_destroy(current);
 			return (1);
 		}
 		prev = current;
@@ -131,7 +139,7 @@ void store_clear(store_t *store)
 	if (store == NULL)
 		return;
 
-	current = store->sessions;
+	current = global_sessions;
 	while (current != NULL)
 	{
 		next = current->next;
@@ -139,5 +147,5 @@ void store_clear(store_t *store)
 		current = next;
 	}
 
-	store->sessions = NULL;
+	global_sessions = NULL;
 }

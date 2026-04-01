@@ -1,4 +1,5 @@
 #include "session.h"
+#include <string.h>
 
 /**
  * session_create - creates a new session

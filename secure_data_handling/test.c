@@ -42,7 +42,7 @@ int main(void)
 		return (1);
 
 	/* Delete session */
-	if (store_delete(store, "session1") == 0)
+	if (store_delete(store, "session1", NULL) == 0)
 		return (1);
 
 	retrieved = store_get(store, "session1");
