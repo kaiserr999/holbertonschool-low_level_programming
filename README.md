@@ -19,6 +19,10 @@ This repository contains projects and exercises for the Low Level Programming cu
 | [`variadic_functions`](./variadic_functions) | Variadic functions with variable arguments |
 | [`intro_debugging`](./intro_debugging) | Debugging techniques and common error patterns |
 | [`simple-calculator`](./simple-calculator) | Menu-driven calculator program |
+| [`singly_linked_lists`](./singly_linked_lists) | Singly linked list operations and algorithms |
+| [`doubly_linked_lists`](./doubly_linked_lists) | Doubly linked list implementation and operations |
+| [`hash_tables`](./hash_tables) | Hash table data structure implementation |
+| [`recursion`](./recursion) | Recursive functions and algorithms |
 | [`benchmarking`](./benchmarking) | Performance analysis and algorithm comparison |
 
 ## Learning Progression
@@ -40,6 +44,9 @@ This repository contains projects and exercises for the Low Level Programming cu
 - **Arrays**: one-dimensional and multi-dimensional arrays  
 - **Strings**: C-style string manipulation
 - **Memory management**: malloc, free, memory leaks
+- **Linked lists**: singly and doubly linked list operations
+- **Hash tables**: hash table creation and key-value storage
+- **Recursion**: recursive problem solving and algorithms
 
 ### 4. Advanced Concepts
 - **Command line**: argc/argv argument processing
