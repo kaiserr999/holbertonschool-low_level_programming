@@ -1,24 +1,19 @@
 #ifndef SESSION_H
 #define SESSION_H
 
-#include <stdlib.h>
-#include <string.h>
+#include <stddef.h>
 
-/**
- * struct session_s - Session data structure
- * @id: Unique session identifier
- * @data: Session data (string)
- * @next: Next session in the store
- */
-typedef struct session_s
-{
-	char *id;
-	char *data;
-	struct session_s *next;
+typedef struct session_s {
+	char *id;          /* expected to be a string */
+	unsigned int uid;  /* user id */
+	unsigned char *data;
+	size_t data_len;
 } session_t;
 
-/* Session functions */
-session_t *session_create(const char *id, const char *data);
-void session_destroy(session_t *session);
+session_t *session_create(const char *id, unsigned int uid, const unsigned char *data, size_t data_len);
+void session_destroy(session_t *s);
 
-#endif /* SESSION_H */
+/* Update the data buffer */
+int session_set_data(session_t *s, const unsigned char *data, size_t data_len);
+
+#endif

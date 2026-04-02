@@ -3,20 +3,25 @@
 
 #include "session.h"
 
-/**
- * struct store_s - Session store data structure
- */
-typedef struct store_s
-{
-	int dummy; /* Dummy member to avoid empty struct warning */
+typedef struct node_s {
+	session_t *sess;
+	struct node_s *next;
+} node_t;
+
+typedef struct store_s {
+	node_t *head;
 } store_t;
 
-/* Store functions */
-store_t *store_create(void);
-void store_destroy(store_t *store);
-int store_insert(store_t *store, session_t *session);
-session_t *store_get(store_t *store, const char *id);
-int store_delete(store_t *store, const char *id, session_t **out);
-void store_clear(store_t *store);
+void store_init(store_t *st);
+int store_add(store_t *st, session_t *s);
+session_t *store_get(store_t *st, const char *id);
 
-#endif /* STORE_H */
+/*
+ * Deletes a session by id.
+ * Returns 1 if deleted, 0 if not found.
+ */
+int store_delete(store_t *st, const char *id, session_t **out);
+
+void store_destroy(store_t *st);
+
+#endif
